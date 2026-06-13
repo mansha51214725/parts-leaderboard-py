@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیڈر بورڈ - ٹاپ 10</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 10px; }
+        .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #2c3e50; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 15px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: center; font-size: 13px; }
+        th { background: #2c3e50; color: white; }
+        .top1 { background: #ffd700; }
+        .top2 { background: #c0c0c0; }
+        .top3 { background: #cd7f32; color: white; }
+        .specialty-tag { font-size: 11px; color: #666; display: block; }
+        .link-btn { display: block; text-align: center; margin-top: 15px; padding: 10px; background: #3498db; color: white; text-decoration: none; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🏆 لیڈر بورڈ - ٹاپ 10</h2>
+        <p class="subtitle">پچھلے 3 ماہ کے پوائنٹس</p>
+        <table>
+            <tr><th>رینک</th><th>نام</th><th>شعبہ</th><th>پوائنٹس</th><th>پرزے</th></tr>
+            {% for rank, row in leaders %}
+                {% set cls = '' %}
+                {% if rank == 1 %}{% set cls = 'top1' %}
+                {% elif rank == 2 %}{% set cls = 'top2' %}
+                {% elif rank == 3 %}{% set cls = 'top3' %}
+                {% endif %}
+            <tr class="{{ cls }}">
+                <td>#{{ rank }}</td>
+                <td>{{ row['name'] }}</td>
+                <td><span class="specialty-tag">{{ row['specialty'] }}</span></td>
+                <td>{{ row['total_points'] }}</td>
+                <td>{{ row['total_parts'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/submit" class="link-btn">📦 پرزہ درج کریں</a>
+    </div>
+</body>
+</html>

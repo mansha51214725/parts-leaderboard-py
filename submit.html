@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پرزہ درج کریں - Need a Part?</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 10px; }
+        .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #2c3e50; margin-bottom: 15px; }
+        input { width: 100%; padding: 10px; margin: 6px 0; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
+        label { font-size: 13px; color: #555; margin-top: 8px; display: block; }
+        button { width: 100%; padding: 12px; background: #27ae60; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; margin-top: 10px; }
+        .message { text-align: center; padding: 10px; border-radius: 8px; font-weight: bold; margin: 10px 0; }
+        .success { background: #d4edda; color: #155724; }
+        .link-btn { display: block; text-align: center; margin-top: 12px; padding: 10px; background: #3498db; color: white; text-decoration: none; border-radius: 8px; }
+        .link-btn2 { background: #e67e22; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📦 پرزہ درج کریں</h2>
+        
+        {% if message %}
+            <div class="message success">{{ message }}</div>
+        {% endif %}
+        
+        <form method="POST">
+            <input type="text" name="part_name" placeholder="پرزے کا نام">
+            <input type="text" name="part_number" placeholder="پرزہ نمبر (Part Number) *" required>
+            <label>📌 یہ پرزہ کس الیکٹرانک آئٹم کا ہے؟ *</label>
+            <input type="text" name="device_item" placeholder="مثلاً: UPS - Inverex 5KW" required>
+            <input type="text" name="device_model" placeholder="ڈیوائس ماڈل نمبر">
+            <input type="number" name="monthly_qty" placeholder="ماہانہ کتنے چاہییں؟" value="1" min="1">
+            <button type="submit">جمع کریں (Submit)</button>
+        </form>
+        
+        <a href="/leaderboard" class="link-btn">🏆 لیڈر بورڈ دیکھیں</a>
+        <a href="/logout" class="link-btn link-btn2">🚪 لاگ آؤٹ</a>
+    </div>
+</body>
+</html>
